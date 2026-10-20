@@ -1,0 +1,88 @@
+:root{--purple:#8a4fd8;--lav:#d9c3f7;--pink:#ff8fc2;--text:#4a2a7a}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%;overflow-x:hidden}
+body{
+  font-family:"Nunito","Trebuchet MS",sans-serif;color:var(--text);
+  background:linear-gradient(160deg,#ffe3f0 0%,#ffc9e2 55%,#ffb3d6 100%) fixed;
+}
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+
+.screen{position:relative;z-index:1;min-height:100svh;display:none;opacity:0;transition:opacity .7s ease}
+.screen.active{display:flex;flex-direction:column}
+.screen.show{opacity:1}
+
+.title{
+  font-family:"Fredoka","Baloo 2","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  font-weight:700;color:var(--purple);line-height:1.05;letter-spacing:.01em;
+  -webkit-text-stroke:.045em var(--purple);paint-order:stroke fill;
+  text-shadow:0 .06em 0 var(--lav),0 .12em .35em rgba(138,79,216,.25);
+}
+
+/* Screen 1 */
+#screen1{align-items:center;justify-content:center;padding:24px}
+.hero{display:flex;align-items:center;justify-content:center;gap:clamp(24px,6vw,100px);width:100%;max-width:1200px}
+.copy{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(28px,6vh,56px);text-align:left;flex:1 1 55%;min-width:0}
+.title.big{font-size:clamp(2.8rem,10vw,6.5rem)}
+.cta{position:relative;display:inline-block}
+#next{
+  position:relative;z-index:2;border:0;cursor:pointer;
+  font:700 clamp(1.3rem,3.5vw,1.8rem) "Fredoka","Trebuchet MS",sans-serif;letter-spacing:.06em;color:#fff;
+  padding:.8em 2.2em;border-radius:999px;background:linear-gradient(180deg,#ff9ccb,#ff6fae);
+  box-shadow:0 8px 0 #e0508f,0 14px 24px rgba(224,80,143,.35);
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+#next:hover{transform:translateY(-2px)}
+#next:active{transform:translateY(5px);box-shadow:0 3px 0 #e0508f}
+.peek{
+  flex:0 1 auto;width:clamp(200px,30vw,420px);height:auto;
+  animation:float 3.6s ease-in-out infinite;pointer-events:none;
+}
+@media (max-width:860px){
+  .hero{flex-direction:column;gap:clamp(20px,4vh,36px)}
+  .copy{align-items:center;text-align:center;flex:0 0 auto}
+  .peek{width:clamp(160px,48vw,260px)}
+}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* Screen 2 */
+#screen2 header{padding:clamp(16px,3vw,32px) clamp(18px,4vw,40px) 0;text-align:right;min-height:clamp(80px,12vw,110px)}
+#heading{display:inline-block;font-size:clamp(1.9rem,4.6vw,3.2rem);will-change:transform;transform-origin:center}
+#screen2 main{flex:1;display:flex;align-items:center;justify-content:center;padding:16px clamp(16px,4vw,40px)}
+.card{
+  width:100%;max-width:640px;padding:clamp(20px,4vw,34px);border-radius:28px;
+  background:rgba(255,255,255,.62);box-shadow:0 12px 40px rgba(138,79,216,.16);
+  font-size:clamp(1.05rem,2.4vw,1.3rem);line-height:1.75;font-weight:600;
+}
+.card p+p{margin-top:1em}
+.card p[dir=rtl]{font-family:"Cairo","Tahoma",sans-serif;text-align:right;line-height:2}
+.w{display:inline-block;opacity:0;transform:translateY(6px);transition:opacity .8s ease,transform .8s ease;white-space:pre}
+.w.show{opacity:1;transform:none}
+.hearts span{display:inline-block;opacity:0;transform:scale(.3)}
+.hearts.pop span{animation:pop .7s cubic-bezier(.3,1.6,.5,1) forwards}
+.hearts.pop span:nth-child(2){animation-delay:.2s}
+.hearts.pop span:nth-child(3){animation-delay:.4s}
+.hearts.pop.beat span{animation:pop .7s forwards,beat 1.6s ease-in-out 1.2s infinite}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+@keyframes beat{50%{transform:scale(1.2)}}
+#screen2 footer{display:flex;align-items:flex-end;justify-content:space-between;padding:0 clamp(16px,4vw,40px) clamp(14px,3vw,28px)}
+.char{width:clamp(90px,16vw,170px);height:auto;margin-left:auto;animation:float 4s ease-in-out infinite}
+#replay{
+  align-self:center;opacity:0;pointer-events:none;border:0;cursor:pointer;border-radius:999px;
+  padding:.6em 1.2em;background:rgba(255,255,255,.7);color:var(--purple);
+  font:700 1rem "Fredoka","Trebuchet MS",sans-serif;box-shadow:0 4px 12px rgba(138,79,216,.2);transition:opacity .6s ease;
+}
+#replay.on{opacity:1;pointer-events:auto}
+
+/* Effects */
+.confetti,.deco{position:absolute;top:0;opacity:.85;animation:fall linear forwards;will-change:transform}
+.confetti{border-radius:2px}
+.deco{line-height:1}
+@keyframes fall{
+  from{transform:translate3d(0,-8vh,0) rotate(0)}
+  to{transform:translate3d(var(--dx),112vh,0) rotate(var(--rot))}
+}
+.particle{position:fixed;z-index:50;pointer-events:none;left:0;top:0}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}
+}

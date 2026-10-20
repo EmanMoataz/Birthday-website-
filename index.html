@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Fredoka:wght@700&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="fx" aria-hidden="true"></div>
+
+  <section id="screen1" class="screen active">
+    <div class="hero">
+      <div class="copy">
+        <h1 class="title big">Happy Birthday!</h1>
+        <div class="cta">
+          <button id="next" type="button">NEXT →</button>
+        </div>
+      </div>
+      <img class="peek" src="birthday-character.png" alt="">
+    </div>
+  </section>
+
+  <section id="screen2" class="screen">
+    <header><h2 id="heading" class="title">Happy Birthday!</h2></header>
+    <main>
+      <div id="message" class="card">
+        <p dir="ltr" lang="en">Happy birthday to you, my sweetie! I'm so grateful to have you in my life.</p>
+        <p dir="ltr" lang="en">Thank you for being there for me and for everything you've done for me. I always strive to live up to your expectations and be worthy of all the kindness and support you've given me.</p>
+        <p dir="ltr" lang="en">Thank you so much for being one of the reasons I am where I am today.</p>
+        <p dir="rtl" lang="ar">ربنا يحققلك كل اللي بتتمنيه، ويجعل أيامك الجاية كلها فرح وسعادة، ويباركلك في صحتك وفي أولادك.</p>
+        <p dir="rtl" lang="ar">بدعيلك دايمًا ❤️❤️❤️</p>
+      </div>
+    </main>
+    <footer>
+      <button id="replay" type="button" aria-label="Replay">↻ Replay</button>
+      <img class="char" src="birthday-character.png" alt="Birthday character">
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
